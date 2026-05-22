@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AI Sales Forecasting Dashboard</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <main class="app-shell">
+    <section class="topbar" aria-label="Dashboard controls">
+      <div>
+        <p class="eyebrow">AI-Powered Sales Intelligence</p>
+        <h1>Sales Forecasting Dashboard</h1>
+      </div>
+      <div class="actions">
+        <label class="file-button" for="csvInput">Upload CSV</label>
+        <input id="csvInput" type="file" accept=".csv,text/csv">
+        <button id="resetData" type="button">Sample Data</button>
+      </div>
+    </section>
+
+    <section class="control-strip" aria-label="Filters">
+      <label>
+        Region
+        <select id="regionFilter"></select>
+      </label>
+      <label>
+        Category
+        <select id="categoryFilter"></select>
+      </label>
+      <label>
+        Forecast
+        <select id="forecastHorizon">
+          <option value="3">3 months</option>
+          <option value="6" selected>6 months</option>
+          <option value="12">12 months</option>
+        </select>
+      </label>
+    </section>
+
+    <section class="kpi-grid" aria-label="Key metrics">
+      <article class="metric">
+        <span>Total Revenue</span>
+        <strong id="totalRevenue">$0</strong>
+        <small id="revenueGrowth">0%</small>
+      </article>
+      <article class="metric">
+        <span>Total Profit</span>
+        <strong id="totalProfit">$0</strong>
+        <small id="profitMargin">0% margin</small>
+      </article>
+      <article class="metric">
+        <span>Orders</span>
+        <strong id="totalOrders">0</strong>
+        <small id="averageOrder">$0 AOV</small>
+      </article>
+      <article class="metric">
+        <span>Next Month Forecast</span>
+        <strong id="nextForecast">$0</strong>
+        <small id="forecastRange">$0 - $0</small>
+      </article>
+    </section>
+
+    <section class="dashboard-grid">
+      <article class="panel wide">
+        <div class="panel-heading">
+          <div>
+            <h2>Revenue Trend and Forecast</h2>
+            <p>Actuals with model forecast and confidence range</p>
+          </div>
+          <span id="modelQuality" class="status-pill">Model ready</span>
+        </div>
+        <canvas id="forecastChart" height="330" aria-label="Revenue forecast chart"></canvas>
+      </article>
+
+      <article class="panel">
+        <div class="panel-heading">
+          <div>
+            <h2>Category Mix</h2>
+            <p>Revenue contribution by product line</p>
+          </div>
+        </div>
+        <canvas id="categoryChart" height="290" aria-label="Category revenue chart"></canvas>
+      </article>
+
+      <article class="panel">
+        <div class="panel-heading">
+          <div>
+            <h2>Regional Performance</h2>
+            <p>Revenue and profit by region</p>
+          </div>
+        </div>
+        <div id="regionBars" class="bar-list"></div>
+      </article>
+
+      <article class="panel wide">
+        <div class="panel-heading">
+          <div>
+            <h2>Generated Business Insights</h2>
+            <p>Automated recommendations from the selected sales data</p>
+          </div>
+        </div>
+        <div id="insightList" class="insight-list"></div>
+      </article>
+
+      <article class="panel wide">
+        <div class="panel-heading">
+          <div>
+            <h2>Recent Sales Records</h2>
+            <p>Latest rows used in the analysis</p>
+          </div>
+        </div>
+        <div class="table-wrap">
+          <table>
+            <thead>
+              <tr>
+                <th>Date</th>
+                <th>Region</th>
+                <th>Category</th>
+                <th>Revenue</th>
+                <th>Orders</th>
+                <th>Profit</th>
+              </tr>
+            </thead>
+            <tbody id="recordsTable"></tbody>
+          </table>
+        </div>
+      </article>
+    </section>
+  </main>
+  <script src="app.js"></script>
+</body>
+</html>

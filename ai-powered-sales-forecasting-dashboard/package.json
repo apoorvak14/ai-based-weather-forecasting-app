@@ -1,0 +1,19 @@
+{
+  "name": "ai-powered-sales-forecasting-dashboard",
+  "version": "1.0.0",
+  "description": "Offline AI-powered sales forecasting and business insights dashboard.",
+  "main": "index.html",
+  "scripts": {
+    "start": "npx serve .",
+    "test": "node tests/smoke-test.js"
+  },
+  "keywords": [
+    "sales",
+    "forecasting",
+    "dashboard",
+    "business-intelligence"
+  ],
+  "author": "",
+  "license": "MIT",
+  "devDependencies": {}
+}
